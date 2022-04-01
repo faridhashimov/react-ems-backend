@@ -12,6 +12,18 @@ const getAllEmployees = async (req, res) => {
         console.log(err)
     }
 }
+// @desc   Get employee
+// @route   GET api/employees
+// @access   Private
+const getEmployee = async (req, res) => {
+    try {
+        const employee = await Employee.findById(req.params.id)
+        res.status(200).json(employee)
+    } catch (err) {
+        res.status(500).json(err)
+        console.log(err)
+    }
+}
 
 // @desc   Update employee
 // @route   PUT api/employees/:id
@@ -62,4 +74,4 @@ const addEmployee = async (req, res) => {
     }
 }
 
-module.exports = { getAllEmployees, addEmployee, updateEmployee, deleteEmployee }
+module.exports = { getAllEmployees, addEmployee, updateEmployee, deleteEmployee, getEmployee  }
