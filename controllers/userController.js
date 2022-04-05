@@ -12,13 +12,16 @@ const registerUser = async (req, res) => {
     const userExists = await User.findOne({
         user: req.body.user,
     })
-    userExists && res.status(400).json('User already exists')
+
+    if (userExists) {
+        return res.status(400).json('User already exists')
+    }
 
     try {
         const savedUser = await newUser.save()
-        return res.status(201).json(savedUser)
+        res.status(201).json(savedUser)
     } catch (err) {
-        return res.status(500).json(err)
+        res.status(500).json(err)
     }
 }
 
