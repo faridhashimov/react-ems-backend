@@ -46,7 +46,7 @@ const deleteUser = async (req, res) => {
     }
 }
 
-// LOGIN
+//LOGIN
 const loginUser = async (req, res) => {
     try {
         const user = await User.findOne({
