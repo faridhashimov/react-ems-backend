@@ -2,7 +2,7 @@ const User = require('../models/User')
 const CryptoJS = require('crypto-js')
 const jwt = require('jsonwebtoken')
 
-// REGISTER NEW USER
+//REGISTER NEW USER
 const registerUser = async (req, res) => {
     const newUser = new User({
         user: req.body.user,
@@ -52,6 +52,8 @@ const loginUser = async (req, res) => {
         const user = await User.findOne({
             user: req.body.user,
         })
+
+        // console.log(req.body.user);
 
         if (!user) return res.status(401).json('Wrong User Name')
 
